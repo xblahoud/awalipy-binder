@@ -9,6 +9,8 @@ wget -O awali.tgz $SOURCE
 tar --extract -f awali.tgz -z
 rm awali.tgz
 cd awali-all-v$V
+patch -p1 < ../fix_awalipy.patch
 mkdir -p _build
 cd _build
-cmake .. && make -j7 && sudo make b -j3 && sudo make install && cd .. && rm -rf awali-all-v$V
+cmake .. && make -j7 && make b && sudo make install && cd ..
+rm -rf fix_awalipy.patch awali-all-v$V
