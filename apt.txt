@@ -1,5 +1,0 @@
-build-essential
-cmake
-graphviz
-cython
-cython3
