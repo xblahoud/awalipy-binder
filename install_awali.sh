@@ -17,8 +17,8 @@ mkdir -p _build
 cd _build
 cmake ..
 make -j7
-sudo mkdir -p /usr/local/lib/awali_otf/
-sudo make -j4 b
+sudo mkdir -p ${HOME}/.awali/otf
+make -j4 b
 sudo make -j7 install
 
 cd ../..
