@@ -2,15 +2,24 @@ set -ex
 
 echo "Install Awali"
 
-V=1.0.2-190218
-SOURCE=http://files.vaucanson-project.org/1.0/tarballs/awali-all-v$V.tgz
+MM_VERSION=1.0
+VERSION=BINDERSNAPSHOT-210330
+FULLNAME=awali-all-${VERSION}
+TARFILE=${FULLNAME}.tgz
+DIR=${FULLNAME}
+URL="http://files.vaucanson-project.org/${MM_VERSION}/tarballs/$TARFILE"
 
-wget -O awali.tgz $SOURCE
-tar --extract -f awali.tgz -z
+wget -O awali.tgz $URL
+tar --extract -f awali.tgz
 rm awali.tgz
-cd awali-all-v$V
-patch -p1 < ../fix_awalipy.patch
+cd ${DIR}
 mkdir -p _build
 cd _build
-cmake .. && make -j7 && make b && sudo make install && cd ..
-rm -rf fix_awalipy.patch awali-all-v$V
+cmake ..
+make -j7
+sudo mkdir -p /usr/local/lib/awali_otf/
+sudo make -j4 b
+sudo make -j7 install
+
+cd ../..
+rm -rf awali-all-v$V
