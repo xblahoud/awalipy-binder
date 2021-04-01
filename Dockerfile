@@ -23,7 +23,7 @@ RUN cd /tmp && ./install_awali.sh && rm -f install_awali.sh
 
 # Copy content
 COPY README.md ${HOME}
-RUN wget --no-directories -P ${HOME}/Notebooks -r -Aipynb -l1 http://files.vaucanson-project.org/1.0/gs/
+RUN wget --no-directories -P ${HOME}/Awali-tutorials -r -Aipynb -l1 http://files.vaucanson-project.org/1.0/gs/
 
 RUN chown -R ${NB_UID} ${HOME}
 
