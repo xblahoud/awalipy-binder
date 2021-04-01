@@ -15,7 +15,7 @@ rm awali.tgz
 cd ${DIR}
 mkdir -p _build
 cd _build
-cmake ..
+cmake  -DCORA=False ..
 make -j7
 sudo mkdir -p ${HOME}/.awali/otf
 make -j4 b
